@@ -6,8 +6,8 @@ def example():
     """通过代码设置参数，适合二次开发"""
     # 测试链接
     error_demo = "https://www.xiaohongshu.com/explore/"
-    image_demo = "https://www.xiaohongshu.com/explore/64d1b406000000000103ee8d"
-    video_demo = "https://www.xiaohongshu.com/explore/64c05652000000000c0378e7"
+    image_demo = "https://www.xiaohongshu.com/explore/64eaef33000000000103e75d"
+    video_demo = "https://www.xiaohongshu.com/explore/64eb345d000000000800c9ab"
     # 实例对象
     path = "./"  # 作品下载储存根路径，默认值：当前路径
     folder = "Download"  # 作品下载文件夹名称（自动创建），默认值：Download
@@ -27,16 +27,15 @@ def example():
     print(xhs.extract(image_demo, download=download))
     print(xhs.extract(video_demo, download=download))
 
-
 def main():
-    """读取并应用配置文件设置的参数，适合一般作品文件下载需求"""
     xhs = XHS(**Settings().run())
-    while True:
-        if url := input("请输入小红书作品链接："):
-            xhs.extract(url, download=True)
-        else:
-            break
-
+    note_id_list = [
+        '64ecb426000000001f03d465',
+        '64da4018000000001701ae02'
+        ]
+    for note_id in note_id_list:
+        url = "https://www.xiaohongshu.com/explore/" + note_id
+        xhs.extract(url, download=True)
 
 if __name__ == '__main__':
     # example()
